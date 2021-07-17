@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "TIL - Makefiles!"
-date:   2020-06-21 +0530
+date:   2021-06-18 +0530
 categories: C++
 ---
 - [`make` command](#make-command)
