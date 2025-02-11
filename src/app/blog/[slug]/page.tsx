@@ -1,5 +1,5 @@
 import { markdownToHtml } from "@/lib/markdownToHtml";
-import { getMappedPost } from "@/lib/posts";
+import { getAllPosts, getMappedPost } from "@/lib/posts";
 import styles from './styles.module.css'
 
 
