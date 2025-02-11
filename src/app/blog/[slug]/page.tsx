@@ -25,8 +25,8 @@ type Params = {
 }
 
 
-// export async function generateStaticParams () {
-//   const posts = getAllPosts()
-//   return posts.map(i => ({slug : i.slug}))
-// }
+export async function generateStaticParams () {
+  const posts = getAllPosts()
+  return posts.map(i => ({slug : i.slug}))
+}
 export default BlogPage;
