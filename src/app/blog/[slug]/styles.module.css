@@ -1,0 +1,19 @@
+.markdown a{
+  color: blue;
+}
+
+.markdown li{
+  list-style-type: disc;
+}
+
+.markdown h1 {
+  @apply text-3xl border-b
+}
+
+.markdown code {
+  background-color: white;
+}
+
+.markdown pre {
+  background-color: white;
+}
