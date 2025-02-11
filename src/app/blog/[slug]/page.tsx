@@ -1,9 +1,9 @@
 import { markdownToHtml } from "@/lib/markdownToHtml";
-import { getAllPosts, getMappedPost, Post } from "@/lib/posts";
+import { getMappedPost } from "@/lib/posts";
 import styles from './styles.module.css'
 
 
-const BlogPage = async (props: any) => {
+const BlogPage = async (props: Params) => {
   const params = await props.params
   const slug = params.slug
   const post = getMappedPost(slug)
@@ -18,11 +18,11 @@ const BlogPage = async (props: any) => {
   )
 }
 
-// type Params = {
-//   params: Promise<{
-//     slug: string,
-//   }>
-// }
+type Params = {
+   params: Promise<{
+     slug: string,
+   }>
+}
 
 
 // export async function generateStaticParams () {

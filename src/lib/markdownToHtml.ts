@@ -1,5 +1,3 @@
-import { remark } from "remark";
-import html from 'remark-html'
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
