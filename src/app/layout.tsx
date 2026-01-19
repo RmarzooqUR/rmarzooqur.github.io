@@ -33,18 +33,17 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="flex min-h-screen flex-col bg-amber-50">
-          <div className="mt-5 mb-8 flex flex-row">
-            
-            <Link href="/" className="mx-2">
+          <div className="mt-5 mb-8 flex flex-row justify-center align-middle p-2">
+            <Link href="/" className="mx-2 hover:opacity-35">
               Home
             </Link >
-            <Link href="" className="mx-2">
+            <Link href="" className="mx-2 hover:opacity-35">
               Resources
             </Link >
-            <Link href="/blog" className="mx-2">
+            <Link href="/blog" className="mx-2 hover:opacity-35">
               Blog
             </Link >
-            <Link href="" className="mx-2">
+            <Link href="" className="mx-2 hover:opacity-35">
               Contact
             </Link >
           </div>
