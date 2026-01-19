@@ -1,5 +1,10 @@
 import { getAllPosts } from "@/lib/posts"
+import { Metadata } from "next"
 import Link from "next/link"
+
+export const metadata: Metadata = {
+  title: 'Blog'
+}
 
 const BlogList = () => {
   const allPosts = getAllPosts()

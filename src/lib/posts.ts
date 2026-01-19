@@ -30,3 +30,9 @@ export const getAllPosts = () => {
 
   return postsFileSlug.map(slug => getMappedPost(slug))
 }
+
+export const getRecentPosts = (maxNum  = 5) => {
+  const posts = getAllPosts()
+
+  return posts.slice(0, maxNum)
+}

@@ -3,22 +3,21 @@ layout: post
 title:  "TIL - Makefiles!"
 date:   2021-06-18 +0530
 categories: C++
+summary: ''
 ---
-- [`make` command](#make-command)
-- [Makefiles](#makefiles)
-- [Macros](#macros)
-
 
 # `make` command
-- make is used for building projects with multiple dependecies and man source/target files (mainly c++)
+- make is used for building projects with multiple dependecies and many source/target files (mainly c++)
+- in order to build, we run, `make <target>`
 - it creates binaries based on definitions in the `Makefile` (perhaps in a `bin` directory)
-- ***`sudo make install` places the binaries in desired installation dir like `/usr/bin` `/usr/local/bin`*** 
-- [hackerearth notes on make](https://www.hackerearth.com/practice/notes/the-make-command-and-makefiles/)
-- [dev.to article](https://dev.to/narasimha1997/understanding-c-c-build-system-by-building-a-simple-project-part-1-4fff)
+- ***`sudo make install` places the binaries in desired installation dir like `/usr/bin` `/usr/local/bin`*** (requires executable copying logic to be provided in the `Makefile`) 
 - use "a.h" (colons) to add local headerfiles.
+- When rebuilding a project after changing certain source files. `make` determines the miniimum number of commands required to be ran from the `Makefile`, so that whole project doesn't get rebuilt everytime.
 
 # Makefiles
+- make reads the Makefile and determines the order and minimum number of commands to run to build the project
 - contains *dependencies* and *rules*
+- a simple example -
 ```makefile
 myproject: main.o dep1.o dep2.o     #project dependecy
     gcc -o myapp main.o dep1.o dep2.o
@@ -31,4 +30,44 @@ dep2.o: dep2.c 1.h 2.h
 ```
 
 # Macros
-*will be updated*
+Macros are like variables for build commands that help with adding flexibilty to build your projects on multiple targets.
+```makefile
+# you can define a macro like so
+CC=gcc
+INSTDIR=/usr/local/bin
+
+# and use them with $()
+$(CC)
+$(INSTDIR)
+```
+## **Default Macros**
+`make` provides some default macros are available to us and it is recommended to use them in the Makefile, so that builds on unique systems can be carried out with the correct tools.  
+These include
+- `CC` - the c compiler
+- `CXX` - the c++ compiler
+- `JAVA_HOME` - java runtime
+- `PWD` - current directory  
+etc.  
+Using default macros allows us to build using the tools available, whereas if we define the 
+tools ourselves, the make command may fail.  
+- you can use `make -p` get a list of all default macros
+
+# Nesting Makefiles
+A large project may have a structure that is modular, with each module requiring its own makefile, so that the parent Makefile doesn't become unmaintainable.  
+For this purpose, we can invoke a `make` command from within a `Makefile`. This triggers the *sub-make* to build the submodule. It is important to use the `MAKE` macro for this purpose.  
+We can use the `-C` option to change into the subdirectory before running its Makefile.  
+ex -
+```makefile
+myapp: main.c dep1.o
+    $(GCC) $(CFLAGS) -o myapp main.c
+
+module1:
+    $(MAKE) -C module1
+```
+- any variables/macros defined in the parent Makefile may also be exported to sub-make using `export variable`
+- any flags defined in parent Makefile are automatically added to the environment of the sub-make with the `MAKEFLAGS` macro.
+
+# References
+- [the-make-command-and-makefiles](https://www.hackerearth.com/practice/notes/the-make-command-and-makefiles/)
+- [understanding-c-c-build-system-by-building-a-simple-project](https://dev.to/narasimha1997/understanding-c-c-build-system-by-building-a-simple-project-part-1-4fff)
+- [make manpage](https://www.gnu.org/software/make/manual/make.html#Recursion)

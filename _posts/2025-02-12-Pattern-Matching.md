@@ -9,5 +9,8 @@ categories: Programming Languages
 Switch statements are outdated, provide lesser control than if statements hence not as widely used. 
 With the proposed addition of Pattern Matching in JS ([proposed ECMAScript standard]()), lets take a look at the capabilites pattern matching brings with examples from other languages
 
-# Patter Matching
+# Pattern Matching
 Modern use cases require switch-case to evolve 
+
+Does two things at once, checks for equality as well as type checking, 
+can also destructure an object to retrieve properties
