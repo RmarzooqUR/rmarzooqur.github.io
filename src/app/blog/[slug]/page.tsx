@@ -1,5 +1,4 @@
-import { markdownToHtml } from "@/lib/markdownToHtml";
-import { getAllPosts, getMappedPost } from "@/lib/posts";
+import { getAllPosts, getMappedPost, Post } from "@/lib/posts";
 import styles from './styles.module.css'
 import { TITLE_FORMAT_SLICE } from "@/consts";
 
@@ -7,16 +6,11 @@ import { TITLE_FORMAT_SLICE } from "@/consts";
 const BlogPage = async (props: Params) => {
   const params = await props.params
   const slug = params.slug
-  const post = getMappedPost(slug)
-  const content = await markdownToHtml(post.content)
+  const {default: Post, data} = await import (`@/../_posts/${slug}.mdx`)
 
-  return (
-    <div className={`max-w-2xl mx-auto ${styles.markdown}`}>
-      <h1>{post.title}</h1>
-      <hr />
-      <div dangerouslySetInnerHTML={{ __html: content }} />
-    </div>
-  )
+  return <div className={`max-w-2xl mx-auto ${styles.markdown}`}>
+    <Post />
+  </div>
 }
 
 type Params = {
@@ -27,8 +21,8 @@ type Params = {
 
 
 export async function generateStaticParams () {
-  const posts = getAllPosts()
-  return posts.map(i => ({slug : i.slug}))
+  const posts = await getAllPosts()
+  return posts.map(i => ({slug : i.slug}))      
 }
 
 export async function generateMetadata (props: Params) {
@@ -41,4 +35,5 @@ export async function generateMetadata (props: Params) {
 }
 
 
-export default BlogPage;
+export const dynamicParams = false
+export default BlogPage

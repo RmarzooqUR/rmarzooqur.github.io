@@ -1,9 +1,15 @@
 import type { NextConfig } from "next";
+import createMdx from "@next/mdx";
+
+const withMdx = createMdx({
+  extension: /\.(md|mdx)$/,
+})
 
 const nextConfig: NextConfig = {
   /* config options here */
   // output: "export",
   reactStrictMode: true,
+  pageExtensions: ['md', 'mdx', 'tsx', 'ts', 'jsx', 'js'],
   async rewrites () {
     return [
       {
@@ -19,4 +25,4 @@ const nextConfig: NextConfig = {
   skipTrailingSlashRedirect: true
 };
 
-export default nextConfig;
+export default withMdx(nextConfig);

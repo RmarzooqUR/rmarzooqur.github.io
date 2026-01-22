@@ -1,11 +1,13 @@
 export const TITLE_FORMAT_SLICE = 11
 
-export const SHOWCASE: {
+export type ISHOWCASE = {
   title: string,
   description: string,
   link?: string
   imgLinks?: string[]
-}[] = [
+}
+
+export const SHOWCASE: ISHOWCASE[] = [
   {
     title: 'PriceHub',
     description: 'Internal tool',

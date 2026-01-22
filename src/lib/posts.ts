@@ -8,6 +8,7 @@ export interface Post {
   content: string
   date: string
   author: Author
+  summary: string
 }
 
 interface Author {
@@ -17,22 +18,39 @@ interface Author {
 
 const postsDir = join(process.cwd(), '_posts')
 
-export const getMappedPost = (slug: string) => {
-  const urlSlug = slug.replace(/\.md$/, "")
-  const file = readFileSync(join(postsDir, `${urlSlug}.md`), 'utf-8')
-  const {content, data} = matter(file)
+export const getMappedPost = async (slug: string) => {
+  const urlSlug = slug.replace(/\.mdx$/, "")
+  const {data} = await import (`@/../../_posts/${urlSlug}.mdx`)
 
-  return { ...data, content, slug: urlSlug } as Post
+  return { ...data, slug: urlSlug } as Post
 }
 
-export const getAllPosts = () => {
+export const getAllPosts = async () => {
   const postsFileSlug = readdirSync(postsDir)
 
-  return postsFileSlug.map(slug => getMappedPost(slug))
+  const allPosts =  await Promise.allSettled(postsFileSlug.map( async (slug) => {
+    const data =  await getMappedPost(slug)
+    return data
+  }))
+
+  return returnFulfilledPosts(allPosts)
 }
 
-export const getRecentPosts = (maxNum  = 5) => {
-  const posts = getAllPosts()
+export const getRecentPosts = async (maxNum  = 5) => {
+  const postSlugs = readdirSync(postsDir)
+  const recentPostsSlugs = postSlugs.slice(0, maxNum)
+  const recentPosts = await Promise.allSettled(recentPostsSlugs.map(async (slug) => await getMappedPost(slug)))
 
-  return posts.slice(0, maxNum)
+  return returnFulfilledPosts(recentPosts)
+}
+
+const returnFulfilledPosts = (posts: PromiseSettledResult<Post>[]) => {
+  const result = [] as Post[]
+
+  posts.forEach(post => {
+    if (post.status === 'fulfilled')
+      result.push((post as PromiseFulfilledResult<Post>).value)
+  });
+  return result
+
 }

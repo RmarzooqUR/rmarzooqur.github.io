@@ -1,4 +1,4 @@
-import { getAllPosts } from "@/lib/posts"
+import { getAllPosts, Post } from "@/lib/posts"
 import { Metadata } from "next"
 import Link from "next/link"
 
@@ -6,8 +6,8 @@ export const metadata: Metadata = {
   title: 'Blog'
 }
 
-const BlogList = () => {
-  const allPosts = getAllPosts()
+const BlogList = async () => {
+  const allPosts = await getAllPosts()
 
   return (
     <ul className="mt-10">
