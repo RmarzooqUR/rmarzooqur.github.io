@@ -11,7 +11,7 @@
   "dependencies": {
     "gray-matter": "^4.0.3",
     "motion": "^12.23.24",
-    "next": "^15.5.7",
+    "next": "^16.1.5",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
     "rehype-starry-night": "^2.2.0",
