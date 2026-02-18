@@ -1,5 +1,4 @@
 import { readdirSync, readFileSync } from "fs"
-import matter from "gray-matter"
 import { join } from "path"
 
 export interface Post {
@@ -49,8 +48,7 @@ const returnFulfilledPosts = (posts: PromiseSettledResult<Post>[]) => {
 
   posts.forEach(post => {
     if (post.status === 'fulfilled')
-      result.push((post as PromiseFulfilledResult<Post>).value)
+      result.unshift((post as PromiseFulfilledResult<Post>).value)
   });
   return result
-
 }

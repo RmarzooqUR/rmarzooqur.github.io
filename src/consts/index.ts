@@ -1,4 +1,4 @@
-export const TITLE_FORMAT_SLICE = 11
+export const TITLE_FORMAT_SLICE = 40
 
 export type ISHOWCASE = {
   title: string,
@@ -12,7 +12,7 @@ export const SHOWCASE: ISHOWCASE[] = [
     title: 'PriceHub',
     description: 'Internal tool',
     link: ''
-    
+
   },
   {
     title: 'YERC',
@@ -25,5 +25,5 @@ export const SHOWCASE: ISHOWCASE[] = [
     link: 'https://www.glamstudios.in/'
   },
 
-  
+
 ]
