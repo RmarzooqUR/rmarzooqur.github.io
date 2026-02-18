@@ -2,7 +2,7 @@ export const data = {
     layout: 'post',
     title:  "TIL - Makefiles!",
     date:   '2021-06-18 +0530',
-    categories: 'C++',
+    categories: ['C++'],
     summary: 'Make is a powerful build automation tool that streamlines compiling complex projects with multiple dependencies. By reading a Makefile, it intelligently determines which files need rebuilding after changes, saving time and effort. This guide covers essential Make concepts including targets, dependencies, rules, macros, and nested Makefiles for modular project structures.',
 }
 
@@ -23,10 +23,14 @@ export const data = {
 - contains *dependencies* and *rules*
 - a simple example -
 ```makefile
-myproject: main.o dep1.o dep2.o     #project dependecy
+myproject: main.o dep1.o dep2.o     
+    #project dependecy
     gcc -o myapp main.o dep1.o dep2.o
-main.o: main.c 1.h      #dependency
-    gcc -c main.c       #rule (must be *tab* indented)
+
+#dependency
+main.o: main.c 1.h
+    #rule (must be *tab* indented)      
+    gcc -c main.c
 dep1.o: dep1.c 1.h
     gcc -c dep1.c
 dep2.o: dep2.c 1.h 2.h
