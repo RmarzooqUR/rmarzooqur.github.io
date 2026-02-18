@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+import styles from './styles.module.css'
 import Link from 'next/link'
+import NavBar from "@/components/NavBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,25 +29,13 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="stylesheet" href="https://esm.sh/@wooorm/starry-night@3/style/both" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="flex min-h-screen flex-col bg-amber-50">
-          <div className="mt-5 mb-8 flex flex-row justify-center align-middle p-2">
-            <Link href="/" className="mx-2 hover:opacity-35">
-              Home
-            </Link >
-            <Link href="" className="mx-2 hover:opacity-35">
-              Resources
-            </Link >
-            <Link href="/blog" className="mx-2 hover:opacity-35">
-              Blog
-            </Link >
-            <Link href="" className="mx-2 hover:opacity-35">
-              Contact
-            </Link >
-          </div>
+        <div className={`${styles.page_container} h-screen overflow-scroll scrollbar-none`}>
+            <NavBar />
           {children}
         </div>
       </body>

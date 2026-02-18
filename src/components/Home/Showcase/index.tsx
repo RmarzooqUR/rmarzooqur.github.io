@@ -6,7 +6,7 @@ type Props = {
 }
 
 export const Showcase = (props: Props) => {
-  return <div className="projects flex flex-col justify-center items-center">
+  return <div className="bg-[#EB9486] p-5 flex flex-col justify-center items-center h-screen">
     <h1 className='text-4xl'>Showcase</h1>
     <div className="showcaseList">
       {props.showcase.map(proj => {
