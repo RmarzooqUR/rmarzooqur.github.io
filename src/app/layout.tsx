@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import styles from './styles.module.css'
-import Link from 'next/link'
 import NavBar from "@/components/NavBar";
 
 const geistSans = Geist({
@@ -28,6 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/gradient-light.min.css" />
         <link rel="stylesheet" href="https://esm.sh/@wooorm/starry-night@3/style/both" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>

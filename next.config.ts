@@ -1,8 +1,12 @@
 import type { NextConfig } from "next";
 import createMdx from "@next/mdx";
+import rehypeHighlight from "rehype-highlight";
 
 const withMdx = createMdx({
   extension: /\.(md|mdx)$/,
+  options: {
+    rehypePlugins: [rehypeHighlight],
+  }
 })
 
 const nextConfig: NextConfig = {
