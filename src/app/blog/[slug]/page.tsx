@@ -1,4 +1,4 @@
-import { getAllPosts, getMappedPost, Post } from "@/lib/posts";
+import { getAllPosts } from "@/lib/posts";
 import styles from './styles.module.css'
 import { TITLE_FORMAT_SLICE } from "@/consts";
 import { SocialShare } from "@/components/BlogPage/SocialShare";
@@ -10,7 +10,7 @@ const BlogPage = async (props: Params) => {
   const { default: Post, data }: { default: any, data: PostMeta } =
     await import(`@/../_posts/${slug}.mdx`)
 
-  return <div className="flex flex-col xl:flex-row my-20">
+  return <div className="flex flex-col xl:flex-row my-2">
     <div className="social
       xl:order-1 order-3 
       xl:sticky xl:top-0 

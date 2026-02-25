@@ -1,5 +1,3 @@
 .page_container {  
   background: linear-gradient(135deg, rgb(182, 217, 251) 0%, rgb(50, 153, 255) 100%);
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
 }
