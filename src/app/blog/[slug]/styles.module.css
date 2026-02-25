@@ -7,7 +7,7 @@
 }
 
 .markdown h1 {
-  @apply text-3xl border-b
+  @apply text-3xl border-b my-3
 }
 
 .markdown code {
@@ -16,19 +16,24 @@
 }
 
 .markdown pre {
+  @apply my-3;
   background-color: rgba(237, 237, 237, 0.15);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   padding: 1rem;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2)
 }
 
+.markdown pre code {
+  background:none;
+}
+
 .utterances {
   position:relative
 }
-
+/* 
 .utterances-frame {
 
-}
+} */
