@@ -1,5 +1,3 @@
-import Link from "next/link";
-import styles from './styles.module.css'
 import VariantGlass from "./VariantGlass";
 
 type Props = {

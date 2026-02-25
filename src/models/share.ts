@@ -5,7 +5,7 @@ export type ShareObject = {
 }
 
 export type ShareList = {
-  [x: string]: (conf: any) => ShareObject
+  [x: string]: (conf: ShareConf) => ShareObject
 }
 
 export type ShareConf = 

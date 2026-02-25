@@ -3,7 +3,7 @@ import createMdx from "@next/mdx";
 import rehypeHighlight from "rehype-highlight";
 
 const withMdx = createMdx({
-  extension: /\.(md|mdx)$/,
+  extension: /\.mdx?$/,
   options: {
     rehypePlugins: [rehypeHighlight],
   }
@@ -26,7 +26,7 @@ const nextConfig: NextConfig = {
       }
     ]
   },
-  skipTrailingSlashRedirect: true
+  skipTrailingSlashRedirect: true,
 };
 
 export default withMdx(nextConfig);

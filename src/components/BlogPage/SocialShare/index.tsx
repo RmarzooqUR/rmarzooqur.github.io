@@ -18,8 +18,8 @@ export function SocialShare(props: Props) {
     setPageUrl(document.location)
   }, [])
   useEffect(() => {
-    setShareButton(socialLinksFactory[props.variant]({title: props.title, pageUrl: pageUrl}))
-  }, [pageUrl])
+    setShareButton(socialLinksFactory[props.variant]({title: props.title, pageUrl: pageUrl!.toString()}))
+  }, [pageUrl, props.title, props.variant])
 
   return <div>
     <Link target="_blank" className="w-4 resize" href={shareButton.url || ''}>

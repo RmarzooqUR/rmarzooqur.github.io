@@ -3,11 +3,12 @@ import styles from './styles.module.css'
 import { TITLE_FORMAT_SLICE } from "@/consts";
 import { SocialShare } from "@/components/BlogPage/SocialShare";
 import { PostMeta } from "@/models/post-meta";
+import { MDXContent } from "mdx/types";
 
 const BlogPage = async (props: Params) => {
   const params = await props.params
   const slug = params.slug
-  const { default: Post, data }: { default: any, data: PostMeta } =
+  const { default: Post, data }: { default: MDXContent, data: PostMeta } =
     await import(`@/../_posts/${slug}.mdx`)
 
   return <div className="flex flex-col xl:flex-row my-2">
