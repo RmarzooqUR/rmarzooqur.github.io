@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync } from "fs"
+import { readdirSync } from "fs"
 import { join } from "path"
 
 export interface Post {
