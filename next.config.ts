@@ -11,21 +11,23 @@ const withMdx = createMdx({
 
 const nextConfig: NextConfig = {
   /* config options here */
+  // output export required for /out folder required by gh pages
   output: "export",
   reactStrictMode: true,
   pageExtensions: ['md', 'mdx', 'tsx', 'ts', 'jsx', 'js'],
-  async rewrites () {
-    return [
-      {
-        source: '/ph/static/:path*',
-        destination: `${process.env.NEXT_PUBLIC_STATIC_HOST}/static/:path*`
-      },
-      {
-        source: '/ph/:path*',
-        destination: `${process.env.NEXT_PUBLIC_POSTHOG_HOST}/:path*`
-      }
-    ]
-  },
+  // rewrites don't work with export
+  // async rewrites () {
+  //   return [
+  //     {
+  //       source: '/ph/static/:path*',
+  //       destination: `${process.env.NEXT_PUBLIC_STATIC_HOST}/static/:path*`
+  //     },
+  //     {
+  //       source: '/ph/:path*',
+  //       destination: `${process.env.NEXT_PUBLIC_POSTHOG_HOST}/:path*`
+  //     }
+  //   ]
+  // },
   skipTrailingSlashRedirect: true,
 };
 
