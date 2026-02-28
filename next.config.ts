@@ -11,7 +11,7 @@ const withMdx = createMdx({
 
 const nextConfig: NextConfig = {
   /* config options here */
-  // output: "export",
+  output: "export",
   reactStrictMode: true,
   pageExtensions: ['md', 'mdx', 'tsx', 'ts', 'jsx', 'js'],
   async rewrites () {
