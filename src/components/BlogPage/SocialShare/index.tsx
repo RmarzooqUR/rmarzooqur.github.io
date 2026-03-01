@@ -11,14 +11,20 @@ export type Props = {
 }
 
 export function SocialShare(props: Props) {
-  const [pageUrl, setPageUrl] = useState<string>();
+  const [pageUrl, setPageUrl] = useState<string>('');
   const [shareButton, setShareButton] = useState({} as ShareObject);
 
   useEffect(() => {
     setPageUrl(document.location.toString())
   }, [])
   useEffect(() => {
-    setShareButton(socialLinksFactory[props.variant]({title: props.title, pageUrl: pageUrl!.toString()}))
+    if (pageUrl)
+      setShareButton(socialLinksFactory[props.variant](
+        {
+          title: props.title, 
+          pageUrl: pageUrl!.toString()
+        }
+      ))
   }, [pageUrl, props.title, props.variant])
 
   return <div>
