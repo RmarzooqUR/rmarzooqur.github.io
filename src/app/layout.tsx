@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import styles from './styles.module.css'
 import NavBar from "@/components/NavBar";
+import { Footer } from "@/components/Home/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,8 +36,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className={`${styles.page_container} h-screen overflow-scroll scrollbar-none`}>
-            <NavBar />
-          {children}
+            <div className="flex flex-col justify-between h-screen">
+              <NavBar />
+              {children}
+              <Footer />
+            </div>
         </div>
       </body>
     </html>

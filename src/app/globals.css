@@ -7,6 +7,16 @@
     scrollbar-width: none;
   }
 }
+
+:root {
+  --color-base-start: rgb(118, 187, 255);
+  --color-base-end: rgb(0, 99, 197);
+}
+
+@theme {
+
+}
+
 /* 
 :root {
   --background: #ffffff;

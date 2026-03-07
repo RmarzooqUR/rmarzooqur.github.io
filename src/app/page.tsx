@@ -12,10 +12,6 @@ export default async function Home() {
       <HeroBanner />
       <Showcase showcase={SHOWCASE} />
       <RecentBlogs posts={recentPosts} />
-      <div className="bg-[#CDE5D7] footer">
-        <h1 className='text-4xl'>Contact Us</h1>
-        <p>Fill form for services</p>
-      </div>
     </>
   );
 }

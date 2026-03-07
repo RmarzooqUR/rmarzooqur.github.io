@@ -10,11 +10,11 @@ const BlogList = async () => {
   const allPosts = await getAllPosts()
 
   return (
-    <ul className="mt-10">
+    <ul className="">
       {allPosts.map((i) => {
         return (
           <Link  key={i.slug} href={`blog/${i.slug}`}>
-            <li className="mx-auto w-1/2">
+            <li className="mx-auto my-2 w-5/6 md:w-1/2">
               <h1 className="text-3xl mb-4">{i.title}</h1>
               <p className="font-thin text-sm">{i.date}</p>
               <hr />

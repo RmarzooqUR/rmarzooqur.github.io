@@ -3,24 +3,23 @@ import styles from './styles.module.css'
 
 export default function VariantGlass() {
   return <div className={`${styles.nav_container}`}>
-      <div className={`${styles.glass} py-8 px-20 flex flex-row justify-between`}>
-        <div className="logo">
-          <Link href="/" className="mx-2 hover:opacity-35">Logo</Link>
+      <div className={`${styles.glass} py-3 md:py-4 px-5 md:px-10 flex flex-col md:flex-row w-5/6 justify-between`}>
+        <div className={`${styles.logo} flex order-1 justify-center`}>
+          <Link href="/" className={styles['nav-button']}>Logo</Link>
         </div>
-        <div className="nav flex flex-row justify-center">
-
-          <Link href="/" className="mx-2 hover:opacity-35">
+        <div className="order-2 md:block nav flex flex-row justify-center">
+          <Link href="/" className={styles['nav-button']}>
             Home
-          </Link >
-          <Link href="" className="mx-2 hover:opacity-35">
+          </Link>
+          <Link href="" className={styles['nav-button']}>
             Tools
-          </Link >
-          <Link href="/blog" className="mx-2 hover:opacity-35">
+          </Link>
+          <Link href="/blog" className={styles['nav-button']}>
             Blog
-          </Link >
-          <Link href="" className="mx-2 hover:opacity-35">
+          </Link>
+          <Link href="" className={styles['nav-button']}>
             Contact
-          </Link >
+          </Link>
         </div>
       </div>
     </div>
