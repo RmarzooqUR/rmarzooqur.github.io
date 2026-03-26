@@ -1,3 +1,4 @@
-.page_container {  
-  background: linear-gradient(135deg, var(--color-base-start) 0%, var(--color-base-end) 100%);
+.page_container {
+  /* background: linear-gradient(135deg, var(--color-base-start) 0%, var(--color-base-end) 100%); */
+  background: white
 }

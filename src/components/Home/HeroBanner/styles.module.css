@@ -1,0 +1,8 @@
+.btn {
+    @apply w-1/4 border-2 py-3 border-blue-400 rounded-xl bg-blue-400 text-white text-center;
+
+}
+
+.secondary {
+    @apply bg-white text-black
+}
