@@ -1,0 +1,60 @@
+export const data = {
+    layout: 'post',
+    title:  "CSS Subgrid with tailwindcss",
+    date:   '2026-04-02T00:00:00.000Z',
+    categories: ['CSS', 'Tailwind'],
+    summary: 'CSS subgrid enables tools that designers use, specially defining global grid layouts which child elements at any level can use, simple grid and subgrid definitions are made even easier with tailwind',
+}
+
+
+<div className="flex justify-center p-5">
+<h1>{data.title}</h1>
+</div>
+
+The most common use case is row wise aligning contents within similar elements that are themselves in a row, for a example a row of cards
+which as as its children, a title, description, banner image etc, each of different sizes, with subgrid, it would be intutive to align 
+the descrption of 1st card to the description of the second. Without grid and subgrid, this task wouldn't be quite as straightforward.
+
+<div className="flex flex-col align-middle justify-center p-5">
+    <div className='w-full md:w-1/2 m-auto'>
+        <img alt="unaligned cards example" src={'/assets/blog/2026-03-26-Subgrid-tailwind/unaligned.png'}></img>
+    </div>
+    <p className='m-auto'>An example of unaligned blog grid cards.</p>
+</div>
+
+
+# Subgrid
+- css subgrid allows you to work like designers that create a global grid and align nested children to this grid
+- the css grid property is only available to the direct children of a parent
+    - subgrid allows deep nested children to use parents grid tracks
+
+```css
+.container {
+    display: grid;
+    grid-template-rows: 2 1fr,1fr;
+    grid-template-columns: 2 1fr, 1fr;
+}
+
+.child {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 2 / span 2;
+}
+```
+
+
+# Subgrid in tailwind
+combination of classes
+```html
+<!-- The parent grid -->
+<div className="grid-rows-4">
+    <!-- The child which aligns its contents with the parent's grid of 4 rows -->
+    <div className="grid grid-rows-subgrid">
+        <!-- specify how many rows a child will span -->
+        <div className="row-span-2 row-start-1"></div>
+        <!-- specify which row will a child be start from -->
+        <div className="row-start-3"></div>
+    </div>
+</div>
+```
+or you can use `row-[<custom_value>]` tailwind syntax to set row-start and row-end shorthand of grid-row: 

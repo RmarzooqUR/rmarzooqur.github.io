@@ -1,8 +1,11 @@
 .btn {
-    @apply w-1/4 border-2 py-3 border-blue-400 rounded-xl bg-blue-400 text-white text-center;
-
+    @apply w-1/4 border-2 py-3 rounded-xl text-white text-center;
+    border-color: rgba(21, 176, 151, 0.5);
+    background-color: rgba(21, 176, 151, 0.5);
+    background-clip: padding-box;
 }
 
 .secondary {
+    border-color: rgba(140, 213, 201, 0.5);
     @apply bg-white text-black
 }

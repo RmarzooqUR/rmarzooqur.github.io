@@ -1,8 +1,8 @@
-.markdown a{
+.markdown a {
   color: blue;
 }
 
-.markdown li{
+.markdown li {
   list-style-type: disc;
 }
 
@@ -27,12 +27,13 @@
 }
 
 .markdown pre code {
-  background:none;
+  background: none;
 }
 
 .utterances {
-  position:relative
+  position: relative
 }
+
 /* 
 .utterances-frame {
 

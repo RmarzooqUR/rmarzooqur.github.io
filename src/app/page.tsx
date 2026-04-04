@@ -6,7 +6,7 @@ import { SHOWCASE } from '@/consts';
 import { getRecentPosts } from '@/lib/posts';
 
 export default async function Home() {
-  const recentPosts = await getRecentPosts()
+  const recentPosts = await getRecentPosts(3)
 
   return (
     <>
