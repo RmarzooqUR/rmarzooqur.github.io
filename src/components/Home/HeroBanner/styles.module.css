@@ -5,6 +5,10 @@
     background-clip: padding-box;
 }
 
+.btn:hover {
+    opacity: 0.35;
+}
+
 .secondary {
     border-color: rgba(140, 213, 201, 0.5);
     @apply bg-white text-black

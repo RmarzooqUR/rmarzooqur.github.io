@@ -1,5 +1,5 @@
 .markdown a {
-  color: blue;
+  color: rgb(36, 116, 5);
 }
 
 .markdown li {
@@ -10,9 +10,21 @@
   @apply text-3xl border-b my-3
 }
 
+.markdown p {
+  @apply my-5
+}
+
+.markdown img {
+  @apply my-5;
+}
+
 .markdown code {
   background-color: rgba(237, 237, 237, 0.15);
   padding: 0.1rem;
+}
+
+.markdown li > ul  {
+  @apply ml-5
 }
 
 .markdown pre {

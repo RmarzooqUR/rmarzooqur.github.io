@@ -40,10 +40,10 @@ const BlogPage = async (props: Params) => {
     <div className="tags
       order-1 xl:order-3 
       xl:h-screen  xl:w-2/12 
-      xl:sticky xl: top-0
+      xl:sticky xl: top-0 mt-5 xl:mt-0
       flex xl:flex-col flex-row justify-center">
       {data.categories.map(i => {
-        return <p className="font-thin text-sm" key={i}>#{i}</p>
+        return <p className="font-thin text-sm mx-3" key={i}>#{i}</p>
       })}
     </div>
   </div>

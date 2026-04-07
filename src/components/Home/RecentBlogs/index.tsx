@@ -11,10 +11,10 @@ export const RecentBlogs = ({ posts }: Props) => {
   return <div className="p-5 recent-blogs h-auto flex items-center flex-col">
     {/* bg-[#FFB7C3] */}
     <h1 className='text-4xl p-5'>From the blog</h1>
-    <div className="p-5 gap-8 md:gap-4 grid-rows-[4 2fr 1fr 1fr 2fr] md:grid-cols-3 grid w-5/6">
+    <div className="p-5 gap-8 md:gap-4  md:grid-cols-3 grid w-5/6">
       {posts.map((p) => {
         return (
-          <Link key={p.slug} href={`/blog/${p.slug}`} className="grid grid-rows-subgrid row-span-4 rounded-xl border shadow-lg" target='_blank'>
+          <Link key={p.slug} href={`/blog/${p.slug}`} className="hover:border-l-4 border-red-400 border-0 grid grid-rows-subgrid row-span-4 rounded-xl border shadow-lg" target='_blank'>
             <div className="grid grid-rows-subgrid row-start-1">
               <div className="rounded-xl h-36 md:h-48 bg-black"></div>
             </div>
@@ -32,6 +32,6 @@ export const RecentBlogs = ({ posts }: Props) => {
       })}
 
     </div>
-    <Link href={'/blog'} className="p-5">Read More...</Link>
+    <Link href={'/blog'} className="p-5 hover:opacity-35">Read More...</Link>
   </div>
 }
