@@ -1,6 +1,6 @@
 export const data = {
     layout: 'post',
-    title:  "CSS Subgrid with tailwindcss",
+    title:  "A Beginners guide to using CSS Subgrid with tailwindcss",
     date:   '2026-04-02T00:00:00.000Z',
     categories: ['CSS', 'Tailwind'],
     summary: 'CSS subgrid enables tools that designers use, specially defining global grid layouts which child elements at any level can use, simple grid and subgrid definitions are made even easier with tailwind',
@@ -10,23 +10,30 @@ export const data = {
 <div className="flex justify-center p-5">
 <h1>{data.title}</h1>
 </div>
+In UI design tools like figma, a grid system is almost always required to create a consistent layout.
+The CSS grid allows UI devs to be able to easily replicate this grid layout into a webpage. 
 
-The most common use case is row wise aligning contents within similar elements that are themselves in a row, for a example a row of cards
-which as as its children, a title, description, banner image etc, each of different sizes, with subgrid, it would be intutive to align 
-the descrption of 1st card to the description of the second. Without grid and subgrid, this task wouldn't be quite as straightforward.
+The **Subgrid** feature essentially allows the elements inside a grid's child element to use the grid tracks
+defined in the parent.
+
+An obvious use case is vertical alignment of elements of different heights arranged in a row.
 
 <div className="flex flex-col align-middle justify-center p-5">
-    <div className='w-full md:w-1/2 m-auto'>
-        <img alt="unaligned cards example" src={'/assets/blog/2026-03-26-Subgrid-tailwind/unaligned.png'}></img>
+    <div className='w-full flex justify-center'>
+        <img alt="unaligned cards example" className='w-5/6' src={'/assets/blog/2026-03-26-Subgrid-tailwind/grid-subgrid.gif'}></img>
     </div>
-    <p className='m-auto'>An example of unaligned blog grid cards.</p>
+    <p className='m-auto'>Fig 1. Visualization of how subgrid uses the parent's grid tracks to align children</p>
 </div>
 
+In the above image we can see the tracks defined in the grid container (parent) being used to align the banner, title
+tags and description elements of a row of cards
 
-# Subgrid
-- css subgrid allows you to work like designers that create a global grid and align nested children to this grid
-- the css grid property is only available to the direct children of a parent
-    - subgrid allows deep nested children to use parents grid tracks
+{/* # Subgrid usage with CSS
+Before we check out the tailwind classes, let's take a refresher on css grid
+- **`display: grid`** - the grid container 
+- **`grid-template-rows: 2 1fr 1fr`** - defines the number and size of rows/columns
+- **`grid-row: 1 / 3`** - shorthand for `grid-row-start` & `grid-row-end`, specifies the line numbers where a child will start/end
+- **span** - 
 
 ```css
 .container {
@@ -40,21 +47,86 @@ the descrption of 1st card to the description of the second. Without grid and su
     grid-template-rows: subgrid;
     grid-row: span 2 / span 2;
 }
-```
-
+``` */}
 
 # Subgrid in tailwind
-combination of classes
+The tailwind utility classes that define a basic grid include
+<table className='table-auto w-full'>
+    <thead>
+        <tr>
+            <th className='text-start'>CSS property</th>
+            <th className='text-start'>Tailwind class</th>
+            <th className='text-start'>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>`display:grid`</td>
+            <td>`grid`</td>
+            <td>specifies element as the grid container </td>
+        </tr>
+        <tr>
+            <td>`grid-template-rows: subgrid`</td>
+            <td>`grid-rows-subgrid`</td>
+            <td>Allows nested child elements to use the grandparent' s grid lines</td>
+        </tr>
+        <tr>
+            <td>`grid-template-rows: repeat(<number>, minmax(0, 1fr))`</td>
+            <td>`grid-rows-\<number>`</td>
+            <td>defines the number of rows with each grid element of equal size *</td>
+        </tr>
+        <tr>
+            <td>`grid-row: span <number> / span <number>`</td>
+            <td>`row-span-\<number>`</td>
+            <td>
+                The `grid-row` css property is a shorthand for `grid-row-start` & `grid-row end`
+                `span` is a keyword that indicates given grid element will span for \<number> no of rows            
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
 ```html
 <!-- The parent grid -->
-<div className="grid-rows-4">
+<div className="grid grid-cols-2 gap-2 w-full">
     <!-- The child which aligns its contents with the parent's grid of 4 rows -->
-    <div className="grid grid-rows-subgrid">
-        <!-- specify how many rows a child will span -->
-        <div className="row-span-2 row-start-1"></div>
-        <!-- specify which row will a child be start from -->
-        <div className="row-start-3"></div>
+    <div className="grid grid-rows-subgrid row-span-4">
+        <!-- specify how many rows a child's span and start-->
+        <div className="grid grid-rows-subgrid row-start-1 bg-green-400">
+            <div className='h-5'></div>
+        </div>
+        <!-- specify how many rows a child's span and start-->
+        <div className="grid grid-rows-subgrid row-start-2 row-span-3 bg-red-400">
+            <div className="h-5"></div>
+        </div>
     </div>
+    <!-- add other columns, you can experiment with the childs placement and spans -->
 </div>
 ```
-or you can use `row-[<custom_value>]` tailwind syntax to set row-start and row-end shorthand of grid-row: 
+- After adding another column with different span/start values, it results in the following grid
+<div className="grid grid-cols-2 gap-2 w-full p-5">
+    <div className="grid grid-rows-subgrid row-span-4">
+        <div className="child grid grid-rows-subgrid row-start-1 bg-green-400">
+            <div className='h-5'></div>
+        </div>
+        <div className="child grid grid-rows-subgrid row-start-2 row-span-3 bg-red-400">
+            <div className="h-5"></div>
+        </div>
+    </div>
+    <div className="grid grid-rows-subgrid row-span-4">
+        <div className="child grid grid-rows-subgrid row-start-1 row-span-2 bg-green-400">
+            <div className='h-5'></div>
+        </div>
+        <div className="child grid grid-rows-subgrid row-start-3 row-span-2 bg-red-400">
+            <div className="h-5"></div>
+        </div>
+    </div>
+</div>
+
+*The properties defined in above table work in the same manner for columns (-cols-, col-span-, col-start-) etc.
+
+*There are many css grid properties which aren't available through these simple tailwind classes but can be accessed
+by using tailwind's `custom_value` and `--variable` syntax. 
+
+*Some of those may include customizing the `repeat` and `minmax` functions in `grid-template-*`.
