@@ -21,7 +21,7 @@ const postsDir = join(process.cwd(), '_posts')
 
 export const getMappedPost = async (slug: string) => {
   const urlSlug = slug.replace(/\.mdx$/, "")
-  const { data } = await import(`@/../../_posts/${urlSlug}.mdx`)
+  const { data } = await import(`@/../../_posts/${urlSlug}/index.mdx`)
 
   return { ...data, slug: urlSlug } as PostMeta
 }

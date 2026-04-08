@@ -9,7 +9,7 @@ const BlogPage = async (props: Params) => {
   const params = await props.params
   const slug = params.slug
   const { default: Post, data }: { default: MDXContent, data: PostMeta } =
-    await import(`@/../_posts/${slug}.mdx`)
+    await import(`@/../_posts/${slug}/index.mdx`)
 
   return <div className="flex flex-col xl:flex-row my-2">
     <div className="social
