@@ -63,10 +63,10 @@ export async function generateStaticParams() {
 
 export async function generateMetadata(props: Params) {
   const sl = await props.params
-  const title = sl.slug
+  const { _, data }: { _: any, data: PostMeta } = await import(`@/../_posts/${sl.slug}/index.mdx`)
 
   return {
-    title: title.slice(TITLE_FORMAT_SLICE)
+    title: data.title
   }
 }
 

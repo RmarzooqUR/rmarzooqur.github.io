@@ -39,6 +39,8 @@ export const getAllPosts = async () => {
 
 export const getRecentPosts = async (maxNum = 3) => {
   const postSlugs = readdirSync(postsDir)
+  const draft = postSlugs.findIndex((i) => i === 'drafts')
+  postSlugs.splice(draft, 1)
   const recentPostsSlugs = postSlugs.slice(0 - maxNum)
   const recentPosts = await Promise.allSettled(recentPostsSlugs.map(async (slug) => await getMappedPost(slug)))
 

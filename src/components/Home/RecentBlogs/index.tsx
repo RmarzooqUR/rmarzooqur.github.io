@@ -1,6 +1,5 @@
-import { TITLE_FORMAT_SLICE } from "@/consts"
-import { Post } from "@/lib/posts"  // should be in a types dir!!
 import { PostMeta } from "@/models/post-meta"
+import { div } from "motion/react-client"
 import Link from "next/link"
 
 type Props = {
@@ -11,12 +10,12 @@ export const RecentBlogs = ({ posts }: Props) => {
   return <div className="p-5 recent-blogs h-auto flex items-center flex-col">
     {/* bg-[#FFB7C3] */}
     <h1 className='text-4xl p-5'>From the blog</h1>
-    <div className="p-5 gap-8 md:gap-4  md:grid-cols-3 grid w-5/6">
+    <div className="p-5 gap-8 md:gap-4 md:grid-cols-3 grid w-5/6">
       {posts.map((p) => {
         return (
-          <Link key={p.slug} href={`/blog/${p.slug}`} className="hover:border-l-4 border-red-400 border-0 grid grid-rows-subgrid row-span-4 rounded-xl border shadow-lg" target='_blank'>
+          <Link key={p.slug} href={`/blog/${p.slug}`} className="border-2 border-transparent hover:border-red-400 hover:shadow-red-300 grid grid-rows-subgrid row-span-4 rounded shadow-xl" target='_blank'>
             <div className="grid grid-rows-subgrid row-start-1">
-              <div className="rounded-xl h-36 md:h-48 bg-black"></div>
+              <div className="h-36 md:h-48 bg-black"></div>
             </div>
             <div className="p-5 grid row-start-2 row-span-3 grid-rows-subgrid" key={p.slug}>
               <h1 className="text-2xl row-start-1">{
