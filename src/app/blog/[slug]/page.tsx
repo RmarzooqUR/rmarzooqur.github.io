@@ -1,6 +1,5 @@
 import { getAllPosts } from "@/lib/posts";
 import styles from './styles.module.css'
-import { TITLE_FORMAT_SLICE } from "@/consts";
 import { SocialShare } from "@/components/BlogPage/SocialShare";
 import { PostMeta } from "@/models/post-meta";
 import { MDXContent } from "mdx/types";
@@ -63,7 +62,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata(props: Params) {
   const sl = await props.params
-  const { _, data }: { _: any, data: PostMeta } = await import(`@/../_posts/${sl.slug}/index.mdx`)
+  const { data }: { data: PostMeta } = await import(`@/../_posts/${sl.slug}/index.mdx`)
 
   return {
     title: data.title

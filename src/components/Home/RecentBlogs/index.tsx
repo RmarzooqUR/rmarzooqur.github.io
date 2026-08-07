@@ -1,5 +1,4 @@
 import { PostMeta } from "@/models/post-meta"
-import { div } from "motion/react-client"
 import Link from "next/link"
 
 type Props = {
