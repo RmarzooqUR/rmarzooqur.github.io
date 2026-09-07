@@ -35,7 +35,7 @@ export function HeroBanner() {
       {/* project flow */}
       {/* carousel ? */}
       <div className="px-3 w-1/2 h-full flex items-center justify-end">
-        <Image alt='' width={1000} height={1000} src={'./assets/Telecommuting-rafiki.svg'} />
+        <Image alt='' loading='eager' width={1000} height={1000} src={'./assets/Telecommuting-rafiki.svg'} />
       </div>
     </div>
   </div>

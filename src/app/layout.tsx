@@ -36,11 +36,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className={`${styles.page_container} h-screen overflow-scroll scrollbar-none`}>
-            <div className="flex flex-col justify-between h-screen">
-              <NavBar />
-              {children}
-              <Footer />
-            </div>
+          <div className="flex flex-col justify-between h-screen">
+            <NavBar />
+            {children}
+            <Footer />
+          </div>
         </div>
       </body>
     </html>
